@@ -1,0 +1,90 @@
+\section{Preparación de datos para modelado}
+Una vez seleccionadas las técnicas de modelado, los datos deben atravesar una etapa de preparación que garantice tres cosas: que las features sean numéricas y estén tipificadas correctamente, que no exista multicolinealidad fuerte entre ellas que pueda inflar los coeficientes de los modelos lineales, y que estén estandarizadas para que los algoritmos basados en distancias (como K-Means) o sensibles a la escala (como la regresión regularizada) operen sobre un espacio homogéneo. Esta sección documenta las tres tareas de preparación realizadas sobre la vista minable Gold antes de entrenar los modelos: análisis de correlación con eliminación de redundantes, imputación de valores faltantes y normalización mediante \texttt{StandardScaler}.
+
+\subsection{Análisis de correlación y eliminación de variables redundantes}
+Sobre el conjunto de 12 features candidatas se calculó la matriz de correlación de Pearson utilizando el método \texttt{df.stat.corr()} de Spark, siguiendo el patrón del notebook de clase. El criterio adoptado para la eliminación de redundantes es un umbral absoluto de $|r| > 0.85$: si dos features superan ese umbral entre sí, se mantiene la de mayor correlación absoluta con el target y se descarta la otra.
+
+\begin{table}[H]
+\centering
+\caption{Correlación entre cada feature y el target \texttt{avg\_punt\_global} (Pearson).}
+\begin{tabular}{l r}
+\toprule
+\textbf{Feature} & \textbf{Correlación} \\
+\midrule
+idx\_privacion              & $-0.546$ \\
+pct\_internet\_icfes         & $+0.449$ \\
+pct\_grupo\_A                & $-0.432$ \\
+n\_proveedores               & $+0.253$ \\
+accesos\_per\_capita\_5\_16  & $+0.201$ \\
+COBERTURA\_NETA              & $+0.186$ \\
+DESERCION                    & $-0.130$ \\
+POBLACION\_5\_16             & $+0.119$ \\
+n\_estudiantes               & $+0.088$ \\
+pct\_rural\_sisben           & $+0.081$ \\
+avg\_velocidad\_bajada       & $+0.074$ \\
+APROBACION                   & $+0.022$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+El análisis identificó algunos pares con correlación elevada pero por debajo del umbral estricto: el par \texttt{n\_estudiantes} y \texttt{POBLACION\_5\_16} ($r = +0.837$), que captura la lógica obvia de que los municipios con más población infantil tienen también más estudiantes presentando la prueba; el par \texttt{idx\_privacion} y \texttt{pct\_grupo\_A} ($r = +0.763$), que refleja la consistencia entre dos medidas distintas de vulnerabilidad socioeconómica derivadas de la misma fuente Sisbén; y el par \texttt{DESERCION} y \texttt{APROBACION} ($r = -0.598$), que cumple la propiedad esperada de que una mayor deserción se asocia con menor aprobación. Ninguno de estos pares supera el umbral de $0.85$, por lo que las 12 variables se conservan para el modelado, dejando que el regularizador de la regresión lineal y el mecanismo de selección automática del árbol de decisión manejen la información compartida entre ellas.
+
+La decisión de conservar las 12 features es defendible por dos razones: primero, el umbral $0.85$ es una convención conservadora ampliamente aceptada para descartar redundancia severa; segundo, en el caso particular de \texttt{n\_estudiantes} y \texttt{POBLACION\_5\_16}, aunque correlacionadas, miden conceptos ligeramente distintos (estudiantes que efectivamente presentaron la prueba versus población total en edad escolar), por lo que conservar ambas enriquece el modelo sin riesgo de inestabilidad.
+
+\subsection{Imputación de valores faltantes con mediana}
+El segundo paso de preparación consiste en el manejo de valores faltantes. El enfoque seguido replica el patrón del notebook de clase: para cada feature numérica se calcula la mediana mediante \texttt{approxQuantile} con una tolerancia de error relativo de $0.01$, y luego se aplica \texttt{fillna} con el valor obtenido. La mediana se prefiere sobre la media porque es más robusta frente a distribuciones asimétricas, comunes en variables como ingresos, accesos a internet o tamaño poblacional.
+
+\begin{table}[H]
+\centering
+\caption{Medianas calculadas e imputadas en las features numéricas.}
+\begin{tabular}{l r}
+\toprule
+\textbf{Feature} & \textbf{Mediana imputada} \\
+\midrule
+pct\_internet\_icfes          & 0.2398 \\
+accesos\_per\_capita\_5\_16   & 0.4425 \\
+avg\_velocidad\_bajada        & 19.27 Mbps \\
+n\_proveedores                & 7 \\
+idx\_privacion                & 3.7637 \\
+pct\_grupo\_A                 & 0.3742 \\
+pct\_rural\_sisben            & 0.5492 \\
+COBERTURA\_NETA               & 0.8628 \\
+DESERCION                     & 0.0306 \\
+APROBACION                    & 0.9208 \\
+n\_estudiantes                & 175 \\
+POBLACION\_5\_16              & 3,228 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Adicionalmente, antes del cálculo de la mediana, las features que resultaron ser 100\% nulas en el panel (en particular \texttt{TAMANO\_PROMEDIO\_DE\_GRUPO} del dataset MEN) fueron descartadas de la lista de candidatas, dado que la mediana no se puede calcular sobre una columna completamente vacía y su inclusión generaría errores en el pipeline.
+
+\subsection{Normalización mediante StandardScaler}
+La tercera tarea de preparación es la normalización de las features numéricas. Para esto se utilizó \texttt{StandardScaler} del paquete \texttt{pyspark.ml.feature}, configurado con \texttt{withMean=True} y \texttt{withStd=True} (centrado en cero y escalado a varianza unitaria). Este paso es crítico por dos razones complementarias.
+
+Primero, K-Means es un algoritmo basado en distancias euclidianas y, por lo tanto, es extremadamente sensible a la escala de las variables. Sin estandarización, features con rangos amplios (como \texttt{POBLACION\_5\_16}, con valores desde cientos hasta cientos de miles) dominarían el cálculo de distancias y opacarían el efecto de features con rangos pequeños (como \texttt{pct\_internet\_icfes}, en el rango $[0, 1]$). La estandarización equipara la influencia de todas las variables sobre la geometría del espacio de clustering.
+
+Segundo, la Regresión Lineal con regularización (Ridge y ElasticNet) también se beneficia de la estandarización, porque los términos de penalización son proporcionales al tamaño de los coeficientes. Si las variables tienen escalas muy distintas, el regularizador penalizaría desproporcionadamente a las features de escala pequeña, sesgando el modelo. La estandarización hace que la regularización opere de manera uniforme sobre todas las variables.
+
+\subsection{Selección final de variables por criterio de negocio}
+La selección final de las 12 variables que alimentan los modelos se justifica desde el criterio de negocio. Las variables están agrupadas en cuatro dimensiones que cubren los ejes principales del problema de la consultoría:
+
+\begin{table}[H]
+\centering
+\caption{Variables finales seleccionadas, agrupadas por dimensión de análisis.}
+\begin{tabular}{l l}
+\toprule
+\textbf{Dimensión} & \textbf{Features} \\
+\midrule
+Conectividad & \texttt{pct\_internet\_icfes}, \texttt{accesos\_per\_capita\_5\_16}, \\
+             & \texttt{avg\_velocidad\_bajada}, \texttt{n\_proveedores} \\
+Pobreza      & \texttt{idx\_privacion}, \texttt{pct\_grupo\_A}, \texttt{pct\_rural\_sisben} \\
+Educación    & \texttt{COBERTURA\_NETA}, \texttt{DESERCION}, \texttt{APROBACION} \\
+Tamaño/Demografía & \texttt{n\_estudiantes}, \texttt{POBLACION\_5\_16} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+La dimensión de conectividad captura tanto la penetración del servicio (porcentaje de hogares con internet, accesos per cápita) como su calidad (velocidad de bajada) y diversidad de oferta (número de proveedores activos en el municipio). La dimensión de pobreza refleja la vulnerabilidad socioeconómica desde tres ángulos complementarios: el índice multidimensional de privación, la proporción de personas en el grupo más vulnerable del Sisbén y el grado de ruralidad. La dimensión educativa incluye los indicadores estructurales del MEN sobre cobertura y permanencia. Finalmente, la dimensión de tamaño y demografía controla por el efecto del volumen poblacional, evitando que el modelo confunda variabilidad estadística (esperable en municipios pequeños) con variabilidad estructural.
+
+Esta agrupación por dimensiones tiene también una utilidad pedagógica al momento de interpretar los resultados de los modelos: cuando el árbol de decisión reporta importancia de variables o cuando la regresión lineal entrega coeficientes, es posible leer los resultados de manera agregada por dimensión y así construir conclusiones de negocio que el Ministerio pueda traducir en líneas de acción concretas.

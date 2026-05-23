@@ -1,0 +1,2 @@
+Filesystem                  Size    Used  Available  Use%
+hdfs://10.43.97.164:9000  44.8 G  15.8 G     21.9 G   35%

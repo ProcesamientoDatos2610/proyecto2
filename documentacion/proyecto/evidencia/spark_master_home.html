@@ -1,0 +1,576 @@
+<!DOCTYPE html><html>
+      <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="/static/bootstrap.min.css" type="text/css"/><link rel="stylesheet" href="/static/vis-timeline-graph2d.min.css" type="text/css"/><link rel="stylesheet" href="/static/webui.css" type="text/css"/><link rel="stylesheet" href="/static/timeline-view.css" type="text/css"/><script src="/static/sorttable.js"></script><script src="/static/jquery-3.5.1.min.js"></script><script src="/static/vis-timeline-graph2d.min.js"></script><script src="/static/bootstrap.bundle.min.js"></script><script src="/static/initialize-tooltips.js"></script><script src="/static/table.js"></script><script src="/static/timeline-view.js"></script><script src="/static/log-view.js"></script><script src="/static/webui.js"></script><script>setUIRoot('')</script>
+        
+        <link rel="shortcut icon" href="/static/spark-logo-77x50px-hd.png"></link>
+        <title>Spark Master at spark://spark-master:7077</title>
+      </head>
+      <body>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12">
+              <h3 style="vertical-align: middle; display: inline-block;">
+                <a style="text-decoration: none" href="/">
+                  <img src="/static/spark-logo-77x50px-hd.png"/>
+                  <span class="version" style="margin-right: 15px;">3.5.2</span>
+                </a>
+                Spark Master at spark://spark-master:7077
+              </h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="row">
+          <div class="col-12">
+            <ul class="list-unstyled">
+              <li><strong>URL:</strong> spark://spark-master:7077</li>
+              
+              <li><strong>Alive Workers:</strong> 4</li>
+              <li><strong>Cores in use:</strong> 16 Total,
+                0 Used</li>
+              <li><strong>Memory in use:</strong>
+                41.6 GiB Total,
+                0.0 B Used</li>
+              <li><strong>Resources in use:</strong>
+                </li>
+              <li><strong>Applications:</strong>
+                0 <a href="#running-app">Running</a>,
+                18 <a href="#completed-app">Completed</a> </li>
+              <li><strong>Drivers:</strong>
+                0 Running,
+                0 Completed </li>
+              <li><strong>Status:</strong> ALIVE</li>
+            </ul>
+          </div>
+        </div><div class="row">
+          <div class="col-12">
+            <span class="collapse-aggregated-workers collapse-table" onClick="collapseTable('collapse-aggregated-workers','aggregated-workers')">
+              <h4>
+                <span class="collapse-table-arrow arrow-open"></span>
+                <a>Workers (4)</a>
+              </h4>
+            </span>
+            <div class="aggregated-workers collapsible-table">
+              <table class="table table-bordered table-sm table-striped sortable">
+      <thead><th width="" class="">Worker Id</th><th width="" class="">Address</th><th width="" class="">State</th><th width="" class="">Cores</th><th width="" class="">Memory</th><th width="" class="">Resources</th></thead>
+      <tbody>
+        <tr>
+      <td>
+        <a href="http://10.43.97.208:8081">
+              worker-20260325082607-10.43.97.208-43929
+            </a>
+      </td>
+      <td>10.43.97.208:43929</td>
+      <td>ALIVE</td>
+      <td>4 (0 Used)</td>
+      <td sorttable_customkey="10644.0">
+        10.4 GiB
+        (0.0 B Used)
+      </td>
+      <td></td>
+    </tr><tr>
+      <td>
+        <a href="http://10.43.97.198:8081">
+              worker-20260325082643-10.43.97.198-34381
+            </a>
+      </td>
+      <td>10.43.97.198:34381</td>
+      <td>ALIVE</td>
+      <td>4 (0 Used)</td>
+      <td sorttable_customkey="10644.0">
+        10.4 GiB
+        (0.0 B Used)
+      </td>
+      <td></td>
+    </tr><tr>
+      <td>
+        <a href="http://10.43.97.163:8081">
+              worker-20260325082651-10.43.97.163-39027
+            </a>
+      </td>
+      <td>10.43.97.163:39027</td>
+      <td>ALIVE</td>
+      <td>4 (0 Used)</td>
+      <td sorttable_customkey="10644.0">
+        10.4 GiB
+        (0.0 B Used)
+      </td>
+      <td></td>
+    </tr><tr>
+      <td>
+        <a href="http://10.43.97.164:8081">
+              worker-20260325082714-10.43.97.164-41607
+            </a>
+      </td>
+      <td>10.43.97.164:41607</td>
+      <td>ALIVE</td>
+      <td>4 (0 Used)</td>
+      <td sorttable_customkey="10644.0">
+        10.4 GiB
+        (0.0 B Used)
+      </td>
+      <td></td>
+    </tr>
+      </tbody>
+    </table>
+            </div>
+          </div>
+        </div><div class="row">
+          <div class="col-12">
+            <span id="running-app" class="collapse-aggregated-activeApps collapse-table" onClick="collapseTable('collapse-aggregated-activeApps','aggregated-activeApps')">
+              <h4>
+                <span class="collapse-table-arrow arrow-open"></span>
+                <a>Running Applications (0)</a>
+              </h4>
+            </span>
+            <div class="aggregated-activeApps collapsible-table">
+              <table class="table table-bordered table-sm table-striped sortable">
+      <thead><th width="" class="">Application ID</th><th width="" class="">Name</th><th width="" class="">Cores</th><th width="" class="">Memory per Executor</th><th width="" class="">Resources Per Executor</th><th width="" class="">Submitted Time</th><th width="" class="">User</th><th width="" class="">State</th><th width="" class="">Duration</th></thead>
+      <tbody>
+        
+      </tbody>
+    </table>
+            </div>
+          </div>
+        </div><div>
+          
+        </div><div class="row">
+          <div class="col-12">
+            <span id="completed-app" class="collapse-aggregated-completedApps collapse-table" onClick="collapseTable('collapse-aggregated-completedApps',
+                'aggregated-completedApps')">
+              <h4>
+                <span class="collapse-table-arrow arrow-open"></span>
+                <a>Completed Applications (18)</a>
+              </h4>
+            </span>
+            <div class="aggregated-completedApps collapsible-table">
+              <table class="table table-bordered table-sm table-striped sortable">
+      <thead><th width="" class="">Application ID</th><th width="" class="">Name</th><th width="" class="">Cores</th><th width="" class="">Memory per Executor</th><th width="" class="">Resources Per Executor</th><th width="" class="">Submitted Time</th><th width="" class="">User</th><th width="" class="">State</th><th width="" class="">Duration</th></thead>
+      <tbody>
+        <tr>
+      <td>
+        <a href="app/?appId=app-20260519160109-0017">app-20260519160109-0017</a>
+        
+      </td>
+      <td>
+        Entrega2-ML-KMeans
+      </td>
+      <td>
+        16
+      </td>
+      <td sorttable_customkey="3072">
+        3.0 GiB
+      </td>
+      <td>
+        
+      </td>
+      <td>2026/05/19 16:01:09</td>
+      <td>estudiante</td>
+      <td>FINISHED</td>
+      <td sorttable_customkey="67767">
+        1.1 min
+      </td>
+    </tr><tr>
+      <td>
+        <a href="app/?appId=app-20260519155951-0016">app-20260519155951-0016</a>
+        
+      </td>
+      <td>
+        Entrega2-ML-RF
+      </td>
+      <td>
+        16
+      </td>
+      <td sorttable_customkey="4096">
+        4.0 GiB
+      </td>
+      <td>
+        
+      </td>
+      <td>2026/05/19 15:59:51</td>
+      <td>estudiante</td>
+      <td>FINISHED</td>
+      <td sorttable_customkey="63095">
+        1.1 min
+      </td>
+    </tr><tr>
+      <td>
+        <a href="app/?appId=app-20260519155726-0015">app-20260519155726-0015</a>
+        
+      </td>
+      <td>
+        Entrega2-ML-RF
+      </td>
+      <td>
+        16
+      </td>
+      <td sorttable_customkey="4096">
+        4.0 GiB
+      </td>
+      <td>
+        
+      </td>
+      <td>2026/05/19 15:57:26</td>
+      <td>estudiante</td>
+      <td>FINISHED</td>
+      <td sorttable_customkey="23858">
+        24 s
+      </td>
+    </tr><tr>
+      <td>
+        <a href="app/?appId=app-20260519155649-0014">app-20260519155649-0014</a>
+        
+      </td>
+      <td>
+        Entrega2-EDA
+      </td>
+      <td>
+        16
+      </td>
+      <td sorttable_customkey="3072">
+        3.0 GiB
+      </td>
+      <td>
+        
+      </td>
+      <td>2026/05/19 15:56:49</td>
+      <td>estudiante</td>
+      <td>FINISHED</td>
+      <td sorttable_customkey="23009">
+        23 s
+      </td>
+    </tr><tr>
+      <td>
+        <a href="app/?appId=app-20260519155538-0013">app-20260519155538-0013</a>
+        
+      </td>
+      <td>
+        Entrega2-Gold-Panel
+      </td>
+      <td>
+        16
+      </td>
+      <td sorttable_customkey="4096">
+        4.0 GiB
+      </td>
+      <td>
+        
+      </td>
+      <td>2026/05/19 15:55:38</td>
+      <td>estudiante</td>
+      <td>FINISHED</td>
+      <td sorttable_customkey="56090">
+        56 s
+      </td>
+    </tr><tr>
+      <td>
+        <a href="app/?appId=app-20260519155441-0012">app-20260519155441-0012</a>
+        
+      </td>
+      <td>
+        Entrega2-Silver-MEN
+      </td>
+      <td>
+        16
+      </td>
+      <td sorttable_customkey="2048">
+        2.0 GiB
+      </td>
+      <td>
+        
+      </td>
+      <td>2026/05/19 15:54:41</td>
+      <td>estudiante</td>
+      <td>FINISHED</td>
+      <td sorttable_customkey="43659">
+        44 s
+      </td>
+    </tr><tr>
+      <td>
+        <a href="app/?appId=app-20260519155323-0011">app-20260519155323-0011</a>
+        
+      </td>
+      <td>
+        Entrega2-Silver-SISBEN
+      </td>
+      <td>
+        16
+      </td>
+      <td sorttable_customkey="4096">
+        4.0 GiB
+      </td>
+      <td>
+        
+      </td>
+      <td>2026/05/19 15:53:23</td>
+      <td>estudiante</td>
+      <td>FINISHED</td>
+      <td sorttable_customkey="64772">
+        1.1 min
+      </td>
+    </tr><tr>
+      <td>
+        <a href="app/?appId=app-20260519155145-0010">app-20260519155145-0010</a>
+        
+      </td>
+      <td>
+        Entrega2-Silver-Internet
+      </td>
+      <td>
+        16
+      </td>
+      <td sorttable_customkey="3072">
+        3.0 GiB
+      </td>
+      <td>
+        
+      </td>
+      <td>2026/05/19 15:51:45</td>
+      <td>estudiante</td>
+      <td>FINISHED</td>
+      <td sorttable_customkey="84488">
+        1.4 min
+      </td>
+    </tr><tr>
+      <td>
+        <a href="app/?appId=app-20260519155013-0009">app-20260519155013-0009</a>
+        
+      </td>
+      <td>
+        Entrega2-Silver-ICFES
+      </td>
+      <td>
+        16
+      </td>
+      <td sorttable_customkey="4096">
+        4.0 GiB
+      </td>
+      <td>
+        
+      </td>
+      <td>2026/05/19 15:50:13</td>
+      <td>estudiante</td>
+      <td>FINISHED</td>
+      <td sorttable_customkey="78407">
+        1.3 min
+      </td>
+    </tr><tr>
+      <td>
+        <a href="app/?appId=app-20260519154254-0008">app-20260519154254-0008</a>
+        
+      </td>
+      <td>
+        Entrega2-Bronze
+      </td>
+      <td>
+        16
+      </td>
+      <td sorttable_customkey="4096">
+        4.0 GiB
+      </td>
+      <td>
+        
+      </td>
+      <td>2026/05/19 15:42:54</td>
+      <td>estudiante</td>
+      <td>FINISHED</td>
+      <td sorttable_customkey="308980">
+        5.1 min
+      </td>
+    </tr><tr>
+      <td>
+        <a href="app/?appId=app-20260519153535-0007">app-20260519153535-0007</a>
+        
+      </td>
+      <td>
+        Entrega2-Bronze
+      </td>
+      <td>
+        16
+      </td>
+      <td sorttable_customkey="4096">
+        4.0 GiB
+      </td>
+      <td>
+        
+      </td>
+      <td>2026/05/19 15:35:35</td>
+      <td>estudiante</td>
+      <td>FINISHED</td>
+      <td sorttable_customkey="295626">
+        4.9 min
+      </td>
+    </tr><tr>
+      <td>
+        <a href="app/?appId=app-20260519153042-0006">app-20260519153042-0006</a>
+        
+      </td>
+      <td>
+        Entrega2-Setup
+      </td>
+      <td>
+        16
+      </td>
+      <td sorttable_customkey="2048">
+        2.0 GiB
+      </td>
+      <td>
+        
+      </td>
+      <td>2026/05/19 15:30:42</td>
+      <td>estudiante</td>
+      <td>FINISHED</td>
+      <td sorttable_customkey="25239">
+        25 s
+      </td>
+    </tr><tr>
+      <td>
+        <a href="app/?appId=app-20260519152803-0005">app-20260519152803-0005</a>
+        
+      </td>
+      <td>
+        Entrega2-Setup
+      </td>
+      <td>
+        16
+      </td>
+      <td sorttable_customkey="2048">
+        2.0 GiB
+      </td>
+      <td>
+        
+      </td>
+      <td>2026/05/19 15:28:03</td>
+      <td>estudiante</td>
+      <td>FINISHED</td>
+      <td sorttable_customkey="5758">
+        6 s
+      </td>
+    </tr><tr>
+      <td>
+        <a href="app/?appId=app-20260519152712-0004">app-20260519152712-0004</a>
+        
+      </td>
+      <td>
+        Entrega2-Setup
+      </td>
+      <td>
+        16
+      </td>
+      <td sorttable_customkey="2048">
+        2.0 GiB
+      </td>
+      <td>
+        
+      </td>
+      <td>2026/05/19 15:27:12</td>
+      <td>estudiante</td>
+      <td>FINISHED</td>
+      <td sorttable_customkey="1293">
+        1 s
+      </td>
+    </tr><tr>
+      <td>
+        <a href="app/?appId=app-20260406083620-0003">app-20260406083620-0003</a>
+        
+      </td>
+      <td>
+        Taller_Sensores
+      </td>
+      <td>
+        16
+      </td>
+      <td sorttable_customkey="1024">
+        1024.0 MiB
+      </td>
+      <td>
+        
+      </td>
+      <td>2026/04/06 08:36:20</td>
+      <td>estudiante</td>
+      <td>FINISHED</td>
+      <td sorttable_customkey="8914957">
+        2.5 h
+      </td>
+    </tr><tr>
+      <td>
+        <a href="app/?appId=app-20260406083016-0002">app-20260406083016-0002</a>
+        
+      </td>
+      <td>
+        Taller_Sensores
+      </td>
+      <td>
+        16
+      </td>
+      <td sorttable_customkey="1024">
+        1024.0 MiB
+      </td>
+      <td>
+        
+      </td>
+      <td>2026/04/06 08:30:16</td>
+      <td>estudiante</td>
+      <td>FINISHED</td>
+      <td sorttable_customkey="194476">
+        3.2 min
+      </td>
+    </tr><tr>
+      <td>
+        <a href="app/?appId=app-20260406082723-0001">app-20260406082723-0001</a>
+        
+      </td>
+      <td>
+        Taller_Sensores
+      </td>
+      <td>
+        16
+      </td>
+      <td sorttable_customkey="1024">
+        1024.0 MiB
+      </td>
+      <td>
+        
+      </td>
+      <td>2026/04/06 08:27:23</td>
+      <td>estudiante</td>
+      <td>FINISHED</td>
+      <td sorttable_customkey="154976">
+        2.6 min
+      </td>
+    </tr><tr>
+      <td>
+        <a href="app/?appId=app-20260325083030-0000">app-20260325083030-0000</a>
+        
+      </td>
+      <td>
+        Spark shell
+      </td>
+      <td>
+        16
+      </td>
+      <td sorttable_customkey="1024">
+        1024.0 MiB
+      </td>
+      <td>
+        
+      </td>
+      <td>2026/03/25 08:30:30</td>
+      <td>estudiante</td>
+      <td>FINISHED</td>
+      <td sorttable_customkey="166531">
+        2.8 min
+      </td>
+    </tr>
+      </tbody>
+    </table>
+            </div>
+          </div>
+        </div><div>
+          
+        </div>
+            </div>
+          </div>
+        </div>
+      </body>
+    </html>

@@ -1,0 +1,5 @@
+4.7 G    14.2 G   /usr/proyecto/bronze
+386.2 M  1.1 G    /usr/proyecto/bronze_parquet
+1.5 M    4.5 M    /usr/proyecto/gold
+1.8 M    5.5 M    /usr/proyecto/models
+113.5 M  340.6 M  /usr/proyecto/silver

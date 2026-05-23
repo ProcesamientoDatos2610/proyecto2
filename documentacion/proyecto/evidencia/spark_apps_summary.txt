@@ -1,0 +1,22 @@
+=== APPS DE ESTA EJECUCIÓN (más recientes 15) ===
+  app-20260325083030-0000         Spark shell                       166.5s  state=FINISHED
+  app-20260406082723-0001         Taller_Sensores                   155.0s  state=FINISHED
+  app-20260406083016-0002         Taller_Sensores                   194.5s  state=FINISHED
+  app-20260406083620-0003         Taller_Sensores                  8915.0s  state=FINISHED
+  app-20260519152712-0004         Entrega2-Setup                      1.3s  state=FINISHED
+  app-20260519152803-0005         Entrega2-Setup                      5.8s  state=FINISHED
+  app-20260519153042-0006         Entrega2-Setup                     25.2s  state=FINISHED
+  app-20260519153535-0007         Entrega2-Bronze                   295.6s  state=FINISHED
+  app-20260519154254-0008         Entrega2-Bronze                   309.0s  state=FINISHED
+  app-20260519155013-0009         Entrega2-Silver-ICFES              78.4s  state=FINISHED
+  app-20260519155145-0010         Entrega2-Silver-Internet           84.5s  state=FINISHED
+  app-20260519155323-0011         Entrega2-Silver-SISBEN             64.8s  state=FINISHED
+  app-20260519155441-0012         Entrega2-Silver-MEN                43.7s  state=FINISHED
+  app-20260519155538-0013         Entrega2-Gold-Panel                56.1s  state=FINISHED
+  app-20260519155649-0014         Entrega2-EDA                       23.0s  state=FINISHED
+
+=== WORKERS ===
+  worker-20260325082643-10.43.97.198-34381  host=10.43.97.198  cores=4  mem=10644MB  state=ALIVE
+  worker-20260325082714-10.43.97.164-41607  host=10.43.97.164  cores=4  mem=10644MB  state=ALIVE
+  worker-20260325082651-10.43.97.163-39027  host=10.43.97.163  cores=4  mem=10644MB  state=ALIVE
+  worker-20260325082607-10.43.97.208-43929  host=10.43.97.208  cores=4  mem=10644MB  state=ALIVE

@@ -1,0 +1,168 @@
+\section{Filtros y transformaciones}
+La construcción de la capa Silver se rige por un principio fundamental de la arquitectura medallion: la capa Bronze conserva los datos crudos sin alteraciones, mientras que la capa Silver aplica todas las decisiones de limpieza, normalización y tipificación necesarias para que los datos puedan ser explotados de manera confiable en las etapas posteriores. Cada filtro y cada transformación aplicada responde a una justificación de negocio o técnica, y se documenta de forma trazable en los notebooks del repositorio. Esta sección consolida, para cada uno de los cuatro datasets del proyecto, el inventario completo de los filtros aplicados y de las transformaciones realizadas, junto con su justificación correspondiente.
+
+\subsection{Dataset Resultados Saber 11 (ICFES)}
+
+\textbf{Filtros aplicados.} El dataset original cuenta con 7,109,704 registros. Los tres filtros aplicados están centrados en garantizar la calidad de la variable objetivo del proyecto, el puntaje global. La aplicación conjunta de los tres filtros reduce el dataset a 4,500,067 registros, equivalente a una eliminación del 37\% de las filas originales.
+
+\begin{table}[H]
+\centering
+\caption{Filtros aplicados al dataset ICFES en la capa Silver.}
+\begin{tabularx}{\textwidth}{c l X}
+\toprule
+\textbf{\#} & \textbf{Filtro} & \textbf{Justificación} \\
+\midrule
+F1 & \texttt{PUNT\_GLOBAL IS NOT NULL} & El puntaje global es la variable objetivo del modelo supervisado; un estudiante sin puntaje no aporta señal predictiva y sesga las agregaciones municipales. \\
+F2 & \texttt{PUNT\_GLOBAL > 0} & Un puntaje igual a cero indica un registro incompleto o no presentado; el mínimo posible al presentar la prueba está alrededor de 50 puntos. \\
+F3 & \texttt{PUNT\_GLOBAL < 500} & El máximo teórico de la prueba Saber 11 es 500 puntos. Valores superiores corresponden a errores de captura o registros corruptos. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\textbf{Transformaciones aplicadas.} Sobre el dataset filtrado se aplican ocho transformaciones que normalizan tipos, generan variables derivadas útiles para el análisis y preparan los datos para los joins multi-fuente.
+
+\begin{table}[H]
+\centering
+\caption{Transformaciones aplicadas al dataset ICFES.}
+\begin{tabularx}{\textwidth}{c l X}
+\toprule
+\textbf{\#} & \textbf{Transformación} & \textbf{Justificación} \\
+\midrule
+T1 & Cast de \texttt{PUNT\_GLOBAL} a tipo entero & La capa Bronze conserva los datos como texto; sin tipificación numérica no es posible aplicar agregaciones (promedios, desviación estándar) ni utilizar la variable como etiqueta en MLlib. \\
+T2 & Cast de puntajes por área (\texttt{PUNT\_LECTURA\_CRITICA}, \texttt{PUNT\_MATEMATICAS}, \texttt{PUNT\_C\_NATURALES}, \texttt{PUNT\_SOCIALES\_CIUDADANAS}, \texttt{PUNT\_INGLES}) a tipo doble, con reemplazo previo de coma decimal por punto & Los puntajes por área pueden llegar con coma decimal (locale es-CO, por ejemplo \texttt{"55,2"}); el cast directo a tipo numérico produciría valores nulos. \\
+T3 & Estandarización de \texttt{FAMI\_TIENEINTERNET} y \texttt{FAMI\_TIENECOMPUTADOR}: paso a mayúsculas y reemplazo de nulos por la categoría \texttt{"SIN INFORMACION"} & La imputación explícita de los valores faltantes permite conservar el registro sin perderlo y trata el "no responde" como una categoría informativa en sí misma. \\
+T4 & Creación de variables binarias \texttt{TIENE\_INTERNET\_BIN} y \texttt{TIENE\_COMPUTADOR\_BIN} (1 si la respuesta es \texttt{Si}, 0 en otro caso) & Las binarias son requeridas para calcular correlaciones de Pearson, promedios municipales y como features en los modelos de MLlib. \\
+T5 & Normalización de nombres geográficos (\texttt{COLE\_DEPTO\_UBICACION}, \texttt{COLE\_MCPIO\_UBICACION}): conversión a mayúsculas y eliminación de acentos & Evita la duplicación lógica de categorías por diferencias de capitalización o acentos (por ejemplo, \texttt{"Bogotá"} frente a \texttt{"BOGOTA"}). \\
+T6 & Zero-padding de los códigos DANE: \texttt{COD\_DEPTO} a 2 dígitos y \texttt{COD\_MPIO} a 5 dígitos & Los códigos DANE son claves estándar de longitud fija; sin padding el join contra Internet, Sisbén y MEN fallaría (por ejemplo, \texttt{"5"} frente a \texttt{"05"}). \\
+T7 & Derivación de la variable \texttt{ANO} a partir del campo \texttt{PERIODO} mediante \texttt{substring(PERIODO, 1, 4)} & El campo \texttt{PERIODO} sigue el formato \texttt{YYYYS} (año más semestre). Extraer el año permite particionar el dataset y comparar resultados entre cohortes. \\
+T8 & Banding del puntaje global en la variable \texttt{RANGO\_PUNT\_GLOBAL}: BAJO ($<$200), MEDIO ($\geq$200 y $<$300), ALTO ($\geq$300) & Variable categórica derivada útil para análisis exploratorios y para reformular el problema como clasificación. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Dataset de Internet Fijo (MinTIC)}
+
+\textbf{Filtros aplicados.} El dataset original tiene 2,795,052 registros. Los dos filtros aplicados eliminan registros con valores no plausibles desde el punto de vista físico o administrativo del servicio. El resultado final son 2,792,934 registros, con una eliminación marginal del 0.08\%.
+
+\begin{table}[H]
+\centering
+\caption{Filtros aplicados al dataset Internet Fijo en la capa Silver.}
+\begin{tabularx}{\textwidth}{c l X}
+\toprule
+\textbf{\#} & \textbf{Filtro} & \textbf{Justificación} \\
+\midrule
+F1 & \texttt{NUM\_ACCESOS IS NOT NULL AND NUM\_ACCESOS $\geq$ 0} & Registros sin accesos reportados o con valores negativos son errores del reporte trimestral del MinTIC; no aportan información medible al análisis. \\
+F2 & \texttt{VELOCIDAD\_BAJADA > 0} & Un servicio activo con velocidad de bajada de 0 Mbps es físicamente imposible; este filtro identifica registros malformados o servicios suspendidos mal etiquetados. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\textbf{Transformaciones aplicadas.}
+
+\begin{table}[H]
+\centering
+\caption{Transformaciones aplicadas al dataset Internet Fijo.}
+\begin{tabularx}{\textwidth}{c l X}
+\toprule
+\textbf{\#} & \textbf{Transformación} & \textbf{Justificación} \\
+\midrule
+T1 & Renombrado de columnas: \texttt{AÑO} $\rightarrow$ \texttt{ANO}, \texttt{No DE ACCESOS} $\rightarrow$ \texttt{NUM\_ACCESOS} & El carácter \texttt{Ñ} y los espacios en los nombres rompen las operaciones de selección de columnas en Spark y dificultan el manejo en HDFS. \\
+T2 & Tipificación: \texttt{ANO} y \texttt{TRIMESTRE} a entero, \texttt{NUM\_ACCESOS} a tipo largo & La capa Bronze conserva los datos como texto; sin tipificación no es posible aplicar agregaciones (suma, promedio). \\
+T3 & Parseo de \texttt{VELOCIDAD\_BAJADA} y \texttt{VELOCIDAD\_SUBIDA}: reemplazo de coma decimal por punto y cast a doble & Los valores vienen con coma decimal (locale es-CO, por ejemplo \texttt{"8,00"}); el cast directo a numérico produce nulos. \\
+T4 & Zero-padding de códigos DANE: \texttt{COD\_DEPTO} (2 dígitos), \texttt{COD\_MPIO} (5 dígitos) & Garantiza la consistencia de las claves de join contra ICFES, Sisbén y MEN. \\
+T5 & Normalización de \texttt{DEPARTAMENTO}, \texttt{MUNICIPIO}, \texttt{PROVEEDOR} y \texttt{TECNOLOGIA}: paso a mayúsculas y remoción de acentos & Evita la duplicación lógica de categorías por diferencias de mayúscula, minúscula o acentos. \\
+T6 & Selección de columnas finales y escritura particionada por \texttt{ANO} & Reduce el I/O en consultas filtradas por año (3 a 5 veces más rápido en lecturas Parquet). \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Dataset de Personas Sisbén (DNP)}
+
+\textbf{Filtros aplicados.} El dataset original tiene 4,465,955 personas. Los dos filtros aplicados se ejecutan antes de la agregación a nivel municipio, lo que evita propagar errores en los promedios municipales. En esta corrida, ambos filtros no eliminaron registros, lo que constituye un resultado positivo del reporte de calidad: confirma que los datos del DNP no presentan huecos en las dimensiones críticas y que la base mantiene su integridad. Los filtros permanecen como defensa estructural en caso de que versiones futuras del dataset presenten problemas.
+
+\begin{table}[H]
+\centering
+\caption{Filtros aplicados al dataset Sisbén en la capa Silver.}
+\begin{tabularx}{\textwidth}{c l X}
+\toprule
+\textbf{\#} & \textbf{Filtro} & \textbf{Justificación} \\
+\midrule
+F1 & \texttt{cod\_mpio IS NOT NULL} & El código DANE de municipio es la clave de agregación y de join con todas las demás fuentes del proyecto. Una persona sin código no puede ser contabilizada en su municipio. \\
+F2 & \texttt{Grupo IN ('A','B','C','D')} & El Sisbén clasifica oficialmente a las personas en estos cuatro grupos. Cualquier valor distinto (nulo, vacío, código erróneo) constituye un error de captura y contaminaría las métricas de distribución por grupo. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\textbf{Transformaciones aplicadas.} Es importante destacar que la quinta transformación, la agregación de persona a municipio, reduce el dataset desde 4,465,955 personas a 1,099 municipios, generando una tabla con un grano apto para hacer joins con ICFES, Internet y MEN.
+
+\begin{table}[H]
+\centering
+\caption{Transformaciones aplicadas al dataset Sisbén.}
+\begin{tabularx}{\textwidth}{c l X}
+\toprule
+\textbf{\#} & \textbf{Transformación} & \textbf{Justificación} \\
+\midrule
+T1 & Tipificación de los 15 indicadores de privación \texttt{I1} a \texttt{I15} a tipo entero & La capa Bronze los conserva como texto; el cast es necesario para calcular promedios y construir el índice de privación. \\
+T2 & Creación de \texttt{COD\_MPIO} mediante \texttt{lpad(cod\_mpio, 5, "0")} & Los códigos DANE de municipio son siempre de 5 dígitos. Mantenerlos como string con padding evita perder el cero inicial. \\
+T3 & Conversión de \texttt{Grupo} a mayúsculas; tipificación de \texttt{ZONA} a entero y de \texttt{FEX} a doble & Estandarización de tipos para garantizar agregaciones consistentes. \\
+T4 & Agregación masiva de persona a municipio mediante \texttt{groupBy(COD\_MPIO).agg(...)}: cálculo de \texttt{n\_personas}, \texttt{n\_hogares}, \texttt{fex\_total}, \texttt{pct\_rural}, distribución por grupo (\texttt{pct\_grupo\_A} a \texttt{pct\_grupo\_D}) y promedios de \texttt{avg\_I1} a \texttt{avg\_I15} & Reduce 4.5 millones de personas a aproximadamente 1,099 municipios, generando el grano necesario para integrar con ICFES, Internet y MEN. \\
+T5 & Derivación de \texttt{idx\_privacion} como suma de los promedios \texttt{avg\_I1} a \texttt{avg\_I15} & Proxy de pobreza multidimensional a nivel municipio en el rango $[0, 15]$. Variable derivada clave como feature en los modelos. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Dataset de Educación MEN}
+
+\textbf{Filtros aplicados.} El dataset MEN cuenta con 15,707 registros. Los dos filtros aplicados eliminan registros sin claves de join y registros administrativos vacíos. El resultado final son 15,700 registros, eliminando 7 filas (0.04\%) que correspondían a municipios sin población infantil reportada.
+
+\begin{table}[H]
+\centering
+\caption{Filtros aplicados al dataset MEN en la capa Silver.}
+\begin{tabularx}{\textwidth}{c l X}
+\toprule
+\textbf{\#} & \textbf{Filtro} & \textbf{Justificación} \\
+\midrule
+F1 & \texttt{COD\_MPIO IS NOT NULL AND ANO IS NOT NULL} & La pareja (municipio, año) es la clave compuesta del dataset MEN y la clave de join con el panel municipal. Registros sin ambas claves no son utilizables. \\
+F2 & \texttt{POBLACION\_5\_16 > 0} & Municipios sin población infantil reportada corresponden a registros administrativos vacíos del MEN; sus tasas y coberturas son indeterminadas y contaminarían los promedios departamentales. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\textbf{Transformaciones aplicadas.}
+
+\begin{table}[H]
+\centering
+\caption{Transformaciones aplicadas al dataset MEN.}
+\begin{tabularx}{\textwidth}{c l X}
+\toprule
+\textbf{\#} & \textbf{Transformación} & \textbf{Justificación} \\
+\midrule
+T1 & Normalización (\textit{slugify}) de las 41 columnas: descomposición Unicode (NFD) para eliminar acentos, reemplazo de espacios y guiones por subrayado, conversión a mayúsculas & Los nombres originales contienen acentos (\texttt{CÓDIGO}, \texttt{POBLACIÓN}, \texttt{BÁSICA}) y caracteres especiales que rompen las operaciones \texttt{df.select(...)} en Spark. \\
+T2 & Tipificación de \texttt{ANO} a entero, y zero-padding de \texttt{CODIGO\_MUNICIPIO} (5 dígitos) y \texttt{CODIGO\_DEPARTAMENTO} (2 dígitos), con renombrado a \texttt{COD\_MPIO} y \texttt{COD\_DEPTO} & Los códigos DANE como string con padding son requeridos para los joins contra ICFES, Internet y Sisbén. \\
+T3 & Parseo de variables porcentuales (\texttt{TASA\_*}, \texttt{COBERTURA\_*}, \texttt{DESERCION*}, \texttt{APROBACION*}, \texttt{REPROBACION*}, \texttt{REPITENCIA*}): \texttt{regexp\_replace("\%", "")} seguido de cast a doble y división por 100 & Bronze los conserva como texto del tipo \texttt{"56.11\%"}. Sin parseo no se pueden usar como features numéricas. La división por 100 lleva los valores a la escala $[0, 1]$, consistente con el resto del proyecto. \\
+T4 & Tipificación de \texttt{POBLACION\_5\_16} y \texttt{SEDES\_CONECTADAS\_A\_INTERNET} a tipo largo, y de \texttt{TAMANO\_PROMEDIO\_DE\_GRUPO} a doble & Numéricos correctos para agregaciones; sin tipado el \texttt{sum}/\texttt{avg} los trata como texto. \\
+T5 & Escritura particionada por \texttt{ANO} en Parquet & Acelera las consultas filtradas por año en Gold y en EDA. \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Resumen consolidado de la limpieza}
+La aplicación del conjunto de filtros y transformaciones sobre las cuatro fuentes produce, en términos cuantitativos, una pérdida marginal de datos: solo el dataset ICFES experimenta una reducción significativa (37\%, atribuible a los registros sin puntaje global), mientras que los demás datasets mantienen prácticamente la totalidad de los registros iniciales.
+
+\begin{table}[H]
+\centering
+\caption{Resumen de filas antes y después de la aplicación de filtros.}
+\begin{tabular}{l r r r}
+\toprule
+\textbf{Dataset} & \textbf{Filas iniciales} & \textbf{Filas finales} & \textbf{Reducción} \\
+\midrule
+ICFES (Saber 11)     & 7,109,704 & 4,500,067 & 37\%   \\
+Internet Fijo        & 2,795,052 & 2,792,934 & 0.08\% \\
+Sisbén (personas)    & 4,465,955 & 4,465,955 & 0\%    \\
+Sisbén (municipios)  & --        & 1,099     & --     \\
+MEN                  & 15,707    & 15,700    & 0.04\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+En conjunto, el pipeline cumple con holgura el requisito mínimo de aplicar al menos dos filtros y al menos tres transformaciones por dataset, y, más importante aún, cada uno de esos procedimientos responde a una justificación técnica o de negocio explícita. La trazabilidad completa de la lógica aplicada está disponible en los notebooks \texttt{02\_silver\_icfes}, \texttt{03\_silver\_internet}, \texttt{04\_silver\_sisben} y \texttt{05\_silver\_men} del repositorio del proyecto.

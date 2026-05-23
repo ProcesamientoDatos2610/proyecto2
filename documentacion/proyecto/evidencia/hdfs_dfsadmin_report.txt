@@ -1,0 +1,82 @@
+Configured Capacity: 48117055488 (44.81 GB)
+Present Capacity: 40512569705 (37.73 GB)
+DFS Remaining: 23567048704 (21.95 GB)
+DFS Used: 16945521001 (15.78 GB)
+DFS Used%: 41.83%
+Replicated Blocks:
+	Under replicated blocks: 0
+	Blocks with corrupt replicas: 0
+	Missing blocks: 0
+	Missing blocks (with replication factor 1): 0
+	Low redundancy blocks with highest priority to recover: 0
+	Pending deletion blocks: 0
+Erasure Coded Block Groups: 
+	Low redundancy block groups: 0
+	Block groups with corrupt internal blocks: 0
+	Missing block groups: 0
+	Low redundancy blocks with highest priority to recover: 0
+	Pending deletion blocks: 0
+
+-------------------------------------------------
+Live datanodes (3):
+
+Name: 10.43.97.163:9866 (spark-worker1)
+Hostname: spark-worker1
+Decommission Status : Normal
+Configured Capacity: 16039018496 (14.94 GB)
+DFS Used: 5648581511 (5.26 GB)
+Non DFS Used: 2541313145 (2.37 GB)
+DFS Remaining: 7849123840 (7.31 GB)
+DFS Used%: 35.22%
+DFS Remaining%: 48.94%
+Configured Cache Capacity: 0 (0 B)
+Cache Used: 0 (0 B)
+Cache Remaining: 0 (0 B)
+Cache Used%: 100.00%
+Cache Remaining%: 0.00%
+Xceivers: 0
+Last contact: Tue May 19 16:02:38 COT 2026
+Last Block Report: Tue May 19 14:02:16 COT 2026
+Num of Blocks: 110
+
+
+Name: 10.43.97.198:9866 (spark-worker3)
+Hostname: spark-worker3
+Decommission Status : Normal
+Configured Capacity: 16039018496 (14.94 GB)
+DFS Used: 5648472256 (5.26 GB)
+Non DFS Used: 2531034944 (2.36 GB)
+DFS Remaining: 7859511296 (7.32 GB)
+DFS Used%: 35.22%
+DFS Remaining%: 49.00%
+Configured Cache Capacity: 0 (0 B)
+Cache Used: 0 (0 B)
+Cache Remaining: 0 (0 B)
+Cache Used%: 100.00%
+Cache Remaining%: 0.00%
+Xceivers: 0
+Last contact: Tue May 19 16:02:39 COT 2026
+Last Block Report: Tue May 19 14:02:53 COT 2026
+Num of Blocks: 110
+
+
+Name: 10.43.97.208:9866 (spark-worker2)
+Hostname: spark-worker2
+Decommission Status : Normal
+Configured Capacity: 16039018496 (14.94 GB)
+DFS Used: 5648467234 (5.26 GB)
+Non DFS Used: 2532137694 (2.36 GB)
+DFS Remaining: 7858413568 (7.32 GB)
+DFS Used%: 35.22%
+DFS Remaining%: 49.00%
+Configured Cache Capacity: 0 (0 B)
+Cache Used: 0 (0 B)
+Cache Remaining: 0 (0 B)
+Cache Used%: 100.00%
+Cache Remaining%: 0.00%
+Xceivers: 0
+Last contact: Tue May 19 16:02:37 COT 2026
+Last Block Report: Tue May 19 14:53:25 COT 2026
+Num of Blocks: 110
+
+

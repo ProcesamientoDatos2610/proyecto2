@@ -1,0 +1,177 @@
+=== Bronze CSV (raw, ASCII renombrados) ===
+Found 4 items
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:29 /usr/proyecto/bronze/icfes
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:29 /usr/proyecto/bronze/internet
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:29 /usr/proyecto/bronze/men
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:29 /usr/proyecto/bronze/sisben
+Found 1 items
+-rw-r--r--   3 estudiante supergroup      3.4 G 2026-05-19 13:26 /usr/proyecto/bronze/icfes/Resultados_unicos_Saber_11_20260519.csv
+Found 1 items
+-rw-r--r--   3 estudiante supergroup    384.3 M 2026-05-19 13:26 /usr/proyecto/bronze/internet/Internet_Fijo_Accesos_por_tecnologia_y_segmento_20260407.csv
+Found 2 items
+-rw-r--r--   3 estudiante supergroup    937.1 M 2026-05-19 13:26 /usr/proyecto/bronze/sisben/DNP_Sisben_Personas_20260519.csv
+-rw-r--r--   3 estudiante supergroup    808.7 K 2026-05-19 13:26 /usr/proyecto/bronze/sisben/Vista_DNP_Sisben_Personas_20260407.csv
+Found 1 items
+-rw-r--r--   3 estudiante supergroup      5.0 M 2026-05-19 13:26 /usr/proyecto/bronze/men/MEN_Estadisticas_Educacion_Municipio_20260519.csv
+
+=== Bronze Parquet ===
+Found 2 items
+-rw-r--r--   3 estudiante supergroup          0 2026-05-19 15:48 /usr/proyecto/bronze_parquet/icfes/_SUCCESS
+-rw-r--r--   3 estudiante supergroup    292.0 M 2026-05-19 15:48 /usr/proyecto/bronze_parquet/icfes/part-00000-7d4ba1f1-1351-4ed8-9d84-aff94b6417ce-c000.snappy.parquet
+Found 2 items
+-rw-r--r--   3 estudiante supergroup          0 2026-05-19 15:43 /usr/proyecto/bronze_parquet/internet/_SUCCESS
+-rw-r--r--   3 estudiante supergroup     29.9 M 2026-05-19 15:43 /usr/proyecto/bronze_parquet/internet/part-00000-61aa4244-552f-4aa5-bdbb-56bda3d8e60c-c000.snappy.parquet
+Found 2 items
+-rw-r--r--   3 estudiante supergroup          0 2026-05-19 15:45 /usr/proyecto/bronze_parquet/sisben/_SUCCESS
+-rw-r--r--   3 estudiante supergroup     63.0 M 2026-05-19 15:45 /usr/proyecto/bronze_parquet/sisben/part-00000-572a567f-0051-4b9c-a936-83f7e2ed42c6-c000.snappy.parquet
+Found 2 items
+-rw-r--r--   3 estudiante supergroup          0 2026-05-19 15:43 /usr/proyecto/bronze_parquet/men/_SUCCESS
+-rw-r--r--   3 estudiante supergroup      1.3 M 2026-05-19 15:43 /usr/proyecto/bronze_parquet/men/part-00000-9d1dd16e-a99c-468f-b11c-13b6d1070a85-c000.snappy.parquet
+
+=== Silver ===
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:51 /usr/proyecto/silver/icfes
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:51 /usr/proyecto/silver/icfes/ANO=2014
+-rw-r--r--   3 estudiante supergroup    5530092 2026-05-19 15:51 /usr/proyecto/silver/icfes/ANO=2014/part-00003-d59351ee-5214-44fa-bd38-08e5b5412155.c000.snappy.parquet
+-rw-r--r--   3 estudiante supergroup    5212256 2026-05-19 15:51 /usr/proyecto/silver/icfes/ANO=2014/part-00010-d59351ee-5214-44fa-bd38-08e5b5412155.c000.snappy.parquet
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:51 /usr/proyecto/silver/icfes/ANO=2015
+-rw-r--r--   3 estudiante supergroup    5883716 2026-05-19 15:51 /usr/proyecto/silver/icfes/ANO=2015/part-00003-d59351ee-5214-44fa-bd38-08e5b5412155.c000.snappy.parquet
+-rw-r--r--   3 estudiante supergroup    5547132 2026-05-19 15:51 /usr/proyecto/silver/icfes/ANO=2015/part-00010-d59351ee-5214-44fa-bd38-08e5b5412155.c000.snappy.parquet
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:51 /usr/proyecto/silver/icfes/ANO=2016
+-rw-r--r--   3 estudiante supergroup    5782115 2026-05-19 15:51 /usr/proyecto/silver/icfes/ANO=2016/part-00003-d59351ee-5214-44fa-bd38-08e5b5412155.c000.snappy.parquet
+-rw-r--r--   3 estudiante supergroup    5429697 2026-05-19 15:51 /usr/proyecto/silver/icfes/ANO=2016/part-00010-d59351ee-5214-44fa-bd38-08e5b5412155.c000.snappy.parquet
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:51 /usr/proyecto/silver/icfes/ANO=2017
+-rw-r--r--   3 estudiante supergroup    5718336 2026-05-19 15:51 /usr/proyecto/silver/icfes/ANO=2017/part-00003-d59351ee-5214-44fa-bd38-08e5b5412155.c000.snappy.parquet
+-rw-r--r--   3 estudiante supergroup    5447859 2026-05-19 15:51 /usr/proyecto/silver/icfes/ANO=2017/part-00010-d59351ee-5214-44fa-bd38-08e5b5412155.c000.snappy.parquet
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:51 /usr/proyecto/silver/icfes/ANO=2018
+-rw-r--r--   3 estudiante supergroup     285386 2026-05-19 15:51 /usr/proyecto/silver/icfes/ANO=2018/part-00003-d59351ee-5214-44fa-bd38-08e5b5412155.c000.snappy.parquet
+-rw-r--r--   3 estudiante supergroup     273214 2026-05-19 15:51 /usr/proyecto/silver/icfes/ANO=2018/part-00010-d59351ee-5214-44fa-bd38-08e5b5412155.c000.snappy.parquet
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:51 /usr/proyecto/silver/icfes/ANO=2019
+-rw-r--r--   3 estudiante supergroup   10175074 2026-05-19 15:51 /usr/proyecto/silver/icfes/ANO=2019/part-00003-d59351ee-5214-44fa-bd38-08e5b5412155.c000.snappy.parquet
+-rw-r--r--   3 estudiante supergroup    9561553 2026-05-19 15:51 /usr/proyecto/silver/icfes/ANO=2019/part-00010-d59351ee-5214-44fa-bd38-08e5b5412155.c000.snappy.parquet
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:51 /usr/proyecto/silver/icfes/ANO=2020
+-rw-r--r--   3 estudiante supergroup     157216 2026-05-19 15:51 /usr/proyecto/silver/icfes/ANO=2020/part-00003-d59351ee-5214-44fa-bd38-08e5b5412155.c000.snappy.parquet
+-rw-r--r--   3 estudiante supergroup     144375 2026-05-19 15:51 /usr/proyecto/silver/icfes/ANO=2020/part-00010-d59351ee-5214-44fa-bd38-08e5b5412155.c000.snappy.parquet
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:51 /usr/proyecto/silver/icfes/ANO=2021
+-rw-r--r--   3 estudiante supergroup     154394 2026-05-19 15:51 /usr/proyecto/silver/icfes/ANO=2021/part-00003-d59351ee-5214-44fa-bd38-08e5b5412155.c000.snappy.parquet
+-rw-r--r--   3 estudiante supergroup     142648 2026-05-19 15:51 /usr/proyecto/silver/icfes/ANO=2021/part-00010-d59351ee-5214-44fa-bd38-08e5b5412155.c000.snappy.parquet
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:51 /usr/proyecto/silver/icfes/ANO=2022
+-rw-r--r--   3 estudiante supergroup     223517 2026-05-19 15:51 /usr/proyecto/silver/icfes/ANO=2022/part-00003-d59351ee-5214-44fa-bd38-08e5b5412155.c000.snappy.parquet
+-rw-r--r--   3 estudiante supergroup    3652875 2026-05-19 15:51 /usr/proyecto/silver/icfes/ANO=2022/part-00010-d59351ee-5214-44fa-bd38-08e5b5412155.c000.snappy.parquet
+-rw-r--r--   3 estudiante supergroup   17379752 2026-05-19 15:51 /usr/proyecto/silver/icfes/ANO=2022/part-00014-d59351ee-5214-44fa-bd38-08e5b5412155.c000.snappy.parquet
+-rw-r--r--   3 estudiante supergroup          0 2026-05-19 15:51 /usr/proyecto/silver/icfes/_SUCCESS
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:53 /usr/proyecto/silver/internet
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:52 /usr/proyecto/silver/internet/ANO=2016
+-rw-r--r--   3 estudiante supergroup       4336 2026-05-19 15:52 /usr/proyecto/silver/internet/ANO=2016/part-00003-018ddd6c-4511-40ac-a3d4-79ec12c65aab.c000.snappy.parquet
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:52 /usr/proyecto/silver/internet/ANO=2017
+-rw-r--r--   3 estudiante supergroup    1592979 2026-05-19 15:52 /usr/proyecto/silver/internet/ANO=2017/part-00003-018ddd6c-4511-40ac-a3d4-79ec12c65aab.c000.snappy.parquet
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:52 /usr/proyecto/silver/internet/ANO=2018
+-rw-r--r--   3 estudiante supergroup    2383184 2026-05-19 15:52 /usr/proyecto/silver/internet/ANO=2018/part-00003-018ddd6c-4511-40ac-a3d4-79ec12c65aab.c000.snappy.parquet
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:52 /usr/proyecto/silver/internet/ANO=2019
+-rw-r--r--   3 estudiante supergroup    3017899 2026-05-19 15:53 /usr/proyecto/silver/internet/ANO=2019/part-00003-018ddd6c-4511-40ac-a3d4-79ec12c65aab.c000.snappy.parquet
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:53 /usr/proyecto/silver/internet/ANO=2020
+-rw-r--r--   3 estudiante supergroup    3585760 2026-05-19 15:53 /usr/proyecto/silver/internet/ANO=2020/part-00003-018ddd6c-4511-40ac-a3d4-79ec12c65aab.c000.snappy.parquet
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:53 /usr/proyecto/silver/internet/ANO=2021
+-rw-r--r--   3 estudiante supergroup    4240489 2026-05-19 15:53 /usr/proyecto/silver/internet/ANO=2021/part-00003-018ddd6c-4511-40ac-a3d4-79ec12c65aab.c000.snappy.parquet
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:53 /usr/proyecto/silver/internet/ANO=2022
+-rw-r--r--   3 estudiante supergroup    7929920 2026-05-19 15:53 /usr/proyecto/silver/internet/ANO=2022/part-00003-018ddd6c-4511-40ac-a3d4-79ec12c65aab.c000.snappy.parquet
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:53 /usr/proyecto/silver/internet/ANO=2023
+-rw-r--r--   3 estudiante supergroup    6544574 2026-05-19 15:53 /usr/proyecto/silver/internet/ANO=2023/part-00003-018ddd6c-4511-40ac-a3d4-79ec12c65aab.c000.snappy.parquet
+-rw-r--r--   3 estudiante supergroup          0 2026-05-19 15:53 /usr/proyecto/silver/internet/_SUCCESS
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:55 /usr/proyecto/silver/men
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:55 /usr/proyecto/silver/men/ANO=2011
+-rw-r--r--   3 estudiante supergroup     174311 2026-05-19 15:55 /usr/proyecto/silver/men/ANO=2011/part-00000-84348304-205b-4258-8680-09c3a18de249.c000.snappy.parquet
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:55 /usr/proyecto/silver/men/ANO=2012
+-rw-r--r--   3 estudiante supergroup     178218 2026-05-19 15:55 /usr/proyecto/silver/men/ANO=2012/part-00000-84348304-205b-4258-8680-09c3a18de249.c000.snappy.parquet
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:55 /usr/proyecto/silver/men/ANO=2013
+-rw-r--r--   3 estudiante supergroup     176683 2026-05-19 15:55 /usr/proyecto/silver/men/ANO=2013/part-00000-84348304-205b-4258-8680-09c3a18de249.c000.snappy.parquet
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:55 /usr/proyecto/silver/men/ANO=2014
+-rw-r--r--   3 estudiante supergroup     197857 2026-05-19 15:55 /usr/proyecto/silver/men/ANO=2014/part-00000-84348304-205b-4258-8680-09c3a18de249.c000.snappy.parquet
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:55 /usr/proyecto/silver/men/ANO=2015
+-rw-r--r--   3 estudiante supergroup     207628 2026-05-19 15:55 /usr/proyecto/silver/men/ANO=2015/part-00000-84348304-205b-4258-8680-09c3a18de249.c000.snappy.parquet
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:55 /usr/proyecto/silver/men/ANO=2016
+-rw-r--r--   3 estudiante supergroup     209169 2026-05-19 15:55 /usr/proyecto/silver/men/ANO=2016/part-00000-84348304-205b-4258-8680-09c3a18de249.c000.snappy.parquet
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:55 /usr/proyecto/silver/men/ANO=2017
+-rw-r--r--   3 estudiante supergroup     209692 2026-05-19 15:55 /usr/proyecto/silver/men/ANO=2017/part-00000-84348304-205b-4258-8680-09c3a18de249.c000.snappy.parquet
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:55 /usr/proyecto/silver/men/ANO=2018
+-rw-r--r--   3 estudiante supergroup     207641 2026-05-19 15:55 /usr/proyecto/silver/men/ANO=2018/part-00000-84348304-205b-4258-8680-09c3a18de249.c000.snappy.parquet
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:55 /usr/proyecto/silver/men/ANO=2019
+-rw-r--r--   3 estudiante supergroup     207116 2026-05-19 15:55 /usr/proyecto/silver/men/ANO=2019/part-00000-84348304-205b-4258-8680-09c3a18de249.c000.snappy.parquet
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:55 /usr/proyecto/silver/men/ANO=2020
+-rw-r--r--   3 estudiante supergroup     218061 2026-05-19 15:55 /usr/proyecto/silver/men/ANO=2020/part-00000-84348304-205b-4258-8680-09c3a18de249.c000.snappy.parquet
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:55 /usr/proyecto/silver/men/ANO=2021
+-rw-r--r--   3 estudiante supergroup     216416 2026-05-19 15:55 /usr/proyecto/silver/men/ANO=2021/part-00000-84348304-205b-4258-8680-09c3a18de249.c000.snappy.parquet
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:55 /usr/proyecto/silver/men/ANO=2022
+-rw-r--r--   3 estudiante supergroup     215384 2026-05-19 15:55 /usr/proyecto/silver/men/ANO=2022/part-00000-84348304-205b-4258-8680-09c3a18de249.c000.snappy.parquet
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:55 /usr/proyecto/silver/men/ANO=2023
+-rw-r--r--   3 estudiante supergroup     218413 2026-05-19 15:55 /usr/proyecto/silver/men/ANO=2023/part-00000-84348304-205b-4258-8680-09c3a18de249.c000.snappy.parquet
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:55 /usr/proyecto/silver/men/ANO=2024
+-rw-r--r--   3 estudiante supergroup     215993 2026-05-19 15:55 /usr/proyecto/silver/men/ANO=2024/part-00000-84348304-205b-4258-8680-09c3a18de249.c000.snappy.parquet
+-rw-r--r--   3 estudiante supergroup          0 2026-05-19 15:55 /usr/proyecto/silver/men/_SUCCESS
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:24 /usr/proyecto/silver/sisben
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:54 /usr/proyecto/silver/sisben_municipal
+-rw-r--r--   3 estudiante supergroup          0 2026-05-19 15:54 /usr/proyecto/silver/sisben_municipal/_SUCCESS
+-rw-r--r--   3 estudiante supergroup     210415 2026-05-19 15:54 /usr/proyecto/silver/sisben_municipal/part-00000-fff88ec9-fe50-4b7f-b40d-89a0fd046c38-c000.snappy.parquet
+
+=== Gold ===
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 16:02 /usr/proyecto/gold/clusters_municipales_k2_ano2022
+-rw-r--r--   3 estudiante supergroup          0 2026-05-19 16:02 /usr/proyecto/gold/clusters_municipales_k2_ano2022/_SUCCESS
+-rw-r--r--   3 estudiante supergroup      60090 2026-05-19 16:02 /usr/proyecto/gold/clusters_municipales_k2_ano2022/part-00000-d0762f33-122f-4c53-88a9-b86b1ac96979-c000.snappy.parquet
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:24 /usr/proyecto/gold/icfes
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:24 /usr/proyecto/gold/internet
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:24 /usr/proyecto/gold/men
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:56 /usr/proyecto/gold/panel_municipal
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:56 /usr/proyecto/gold/panel_municipal/ANO=2014
+-rw-r--r--   3 estudiante supergroup     208721 2026-05-19 15:56 /usr/proyecto/gold/panel_municipal/ANO=2014/part-00000-6017e239-4085-44af-981e-2df42022f044.c000.snappy.parquet
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:56 /usr/proyecto/gold/panel_municipal/ANO=2015
+-rw-r--r--   3 estudiante supergroup     208949 2026-05-19 15:56 /usr/proyecto/gold/panel_municipal/ANO=2015/part-00000-6017e239-4085-44af-981e-2df42022f044.c000.snappy.parquet
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:56 /usr/proyecto/gold/panel_municipal/ANO=2016
+-rw-r--r--   3 estudiante supergroup     208078 2026-05-19 15:56 /usr/proyecto/gold/panel_municipal/ANO=2016/part-00000-6017e239-4085-44af-981e-2df42022f044.c000.snappy.parquet
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:56 /usr/proyecto/gold/panel_municipal/ANO=2017
+-rw-r--r--   3 estudiante supergroup     248522 2026-05-19 15:56 /usr/proyecto/gold/panel_municipal/ANO=2017/part-00000-6017e239-4085-44af-981e-2df42022f044.c000.snappy.parquet
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:56 /usr/proyecto/gold/panel_municipal/ANO=2018
+-rw-r--r--   3 estudiante supergroup      45940 2026-05-19 15:56 /usr/proyecto/gold/panel_municipal/ANO=2018/part-00000-6017e239-4085-44af-981e-2df42022f044.c000.snappy.parquet
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:56 /usr/proyecto/gold/panel_municipal/ANO=2019
+-rw-r--r--   3 estudiante supergroup     251675 2026-05-19 15:56 /usr/proyecto/gold/panel_municipal/ANO=2019/part-00000-6017e239-4085-44af-981e-2df42022f044.c000.snappy.parquet
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:56 /usr/proyecto/gold/panel_municipal/ANO=2020
+-rw-r--r--   3 estudiante supergroup      38998 2026-05-19 15:56 /usr/proyecto/gold/panel_municipal/ANO=2020/part-00000-6017e239-4085-44af-981e-2df42022f044.c000.snappy.parquet
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:56 /usr/proyecto/gold/panel_municipal/ANO=2021
+-rw-r--r--   3 estudiante supergroup      38391 2026-05-19 15:56 /usr/proyecto/gold/panel_municipal/ANO=2021/part-00000-6017e239-4085-44af-981e-2df42022f044.c000.snappy.parquet
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:56 /usr/proyecto/gold/panel_municipal/ANO=2022
+-rw-r--r--   3 estudiante supergroup     252076 2026-05-19 15:56 /usr/proyecto/gold/panel_municipal/ANO=2022/part-00000-6017e239-4085-44af-981e-2df42022f044.c000.snappy.parquet
+-rw-r--r--   3 estudiante supergroup          0 2026-05-19 15:56 /usr/proyecto/gold/panel_municipal/_SUCCESS
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 15:24 /usr/proyecto/gold/sisben
+
+=== Modelos ===
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 16:02 /usr/proyecto/models/kmeans_k2
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 16:02 /usr/proyecto/models/kmeans_k2/data
+-rw-r--r--   3 estudiante supergroup          0 2026-05-19 16:02 /usr/proyecto/models/kmeans_k2/data/_SUCCESS
+-rw-r--r--   3 estudiante supergroup       1958 2026-05-19 16:02 /usr/proyecto/models/kmeans_k2/data/part-00000-f926ccf0-86e6-43d5-b1d9-9fe0593ac030-c000.snappy.parquet
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 16:02 /usr/proyecto/models/kmeans_k2/metadata
+-rw-r--r--   3 estudiante supergroup          0 2026-05-19 16:02 /usr/proyecto/models/kmeans_k2/metadata/_SUCCESS
+-rw-r--r--   3 estudiante supergroup        464 2026-05-19 16:02 /usr/proyecto/models/kmeans_k2/metadata/part-00000
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 16:00 /usr/proyecto/models/rf_punt_global
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 16:00 /usr/proyecto/models/rf_punt_global/metadata
+-rw-r--r--   3 estudiante supergroup          0 2026-05-19 16:00 /usr/proyecto/models/rf_punt_global/metadata/_SUCCESS
+-rw-r--r--   3 estudiante supergroup        276 2026-05-19 16:00 /usr/proyecto/models/rf_punt_global/metadata/part-00000
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 16:00 /usr/proyecto/models/rf_punt_global/stages
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 16:00 /usr/proyecto/models/rf_punt_global/stages/0_VectorAssembler_e2f293a89738
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 16:00 /usr/proyecto/models/rf_punt_global/stages/0_VectorAssembler_e2f293a89738/metadata
+-rw-r--r--   3 estudiante supergroup          0 2026-05-19 16:00 /usr/proyecto/models/rf_punt_global/stages/0_VectorAssembler_e2f293a89738/metadata/_SUCCESS
+-rw-r--r--   3 estudiante supergroup        572 2026-05-19 16:00 /usr/proyecto/models/rf_punt_global/stages/0_VectorAssembler_e2f293a89738/metadata/part-00000
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 16:00 /usr/proyecto/models/rf_punt_global/stages/1_StandardScaler_fd05d7046d49
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 16:00 /usr/proyecto/models/rf_punt_global/stages/1_StandardScaler_fd05d7046d49/data
+-rw-r--r--   3 estudiante supergroup          0 2026-05-19 16:00 /usr/proyecto/models/rf_punt_global/stages/1_StandardScaler_fd05d7046d49/data/_SUCCESS
+-rw-r--r--   3 estudiante supergroup       3023 2026-05-19 16:00 /usr/proyecto/models/rf_punt_global/stages/1_StandardScaler_fd05d7046d49/data/part-00000-8473bd5e-8f9c-4b60-ab38-128f2104ebc5-c000.snappy.parquet
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 16:00 /usr/proyecto/models/rf_punt_global/stages/1_StandardScaler_fd05d7046d49/metadata
+-rw-r--r--   3 estudiante supergroup          0 2026-05-19 16:00 /usr/proyecto/models/rf_punt_global/stages/1_StandardScaler_fd05d7046d49/metadata/_SUCCESS
+-rw-r--r--   3 estudiante supergroup        340 2026-05-19 16:00 /usr/proyecto/models/rf_punt_global/stages/1_StandardScaler_fd05d7046d49/metadata/part-00000
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 16:00 /usr/proyecto/models/rf_punt_global/stages/2_RandomForestRegressor_4d297f3eb5b4
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 16:00 /usr/proyecto/models/rf_punt_global/stages/2_RandomForestRegressor_4d297f3eb5b4/data
+-rw-r--r--   3 estudiante supergroup          0 2026-05-19 16:00 /usr/proyecto/models/rf_punt_global/stages/2_RandomForestRegressor_4d297f3eb5b4/data/_SUCCESS
+-rw-r--r--   3 estudiante supergroup    1910732 2026-05-19 16:00 /usr/proyecto/models/rf_punt_global/stages/2_RandomForestRegressor_4d297f3eb5b4/data/part-00000-73c87dae-579c-4d77-a30e-6b4713006d09-c000.snappy.parquet
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 16:00 /usr/proyecto/models/rf_punt_global/stages/2_RandomForestRegressor_4d297f3eb5b4/metadata
+-rw-r--r--   3 estudiante supergroup          0 2026-05-19 16:00 /usr/proyecto/models/rf_punt_global/stages/2_RandomForestRegressor_4d297f3eb5b4/metadata/_SUCCESS
+-rw-r--r--   3 estudiante supergroup        726 2026-05-19 16:00 /usr/proyecto/models/rf_punt_global/stages/2_RandomForestRegressor_4d297f3eb5b4/metadata/part-00000
+drwxr-xr-x   - estudiante supergroup          0 2026-05-19 16:00 /usr/proyecto/models/rf_punt_global/stages/2_RandomForestRegressor_4d297f3eb5b4/treesMetadata
+-rw-r--r--   3 estudiante supergroup          0 2026-05-19 16:00 /usr/proyecto/models/rf_punt_global/stages/2_RandomForestRegressor_4d297f3eb5b4/treesMetadata/_SUCCESS
+-rw-r--r--   3 estudiante supergroup      10048 2026-05-19 16:00 /usr/proyecto/models/rf_punt_global/stages/2_RandomForestRegressor_4d297f3eb5b4/treesMetadata/part-00000-9d8c3597-60f0-4a95-bfab-c89a77648e16-c000.snappy.parquet
